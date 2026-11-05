@@ -146,11 +146,13 @@ http.createServer((req, res) => {
   let f = path.join(root, p);
   if (!f.startsWith(root)) { res.writeHead(403); return res.end(); }
   if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
+  // clean page addresses, same as .htaccess on the live server: /service -> service.html
+  if (!fs.existsSync(f) && fs.existsSync(f + '.html')) f += '.html';
   if (!fs.existsSync(f)) f = path.join(root, 'index.html');
   res.writeHead(200, { 'Content-Type': types[path.extname(f).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
   fs.createReadStream(f).pipe(res);
 }).listen(PORT, () => {
   console.log('Site:        http://localhost:' + PORT);
-  console.log('Blog upload: http://localhost:' + PORT + '/blog-admin.html');
+  console.log('Blog upload: http://localhost:' + PORT + '/blog-admin');
   console.log('Admin password: ' + (process.env.BLOG_ADMIN_PASSWORD ? '(from BLOG_ADMIN_PASSWORD)' : PASSWORD + '  (saved in data/admin.json)'));
 });

@@ -15,7 +15,7 @@
   function longDate(d) { var x = parseDate(d); return MONTHS[x.m] + ' ' + x.d + ', ' + x.y; }
   // the date badge on blog cards is narrow: long month names become "Nov", "Sep", ...
   function badgeMonth(m) { return MONTHS[m].length > 5 ? MONTHS[m].slice(0, 3) : MONTHS[m]; }
-  function postUrl(p) { return 'post.html?slug=' + encodeURIComponent(p.slug); }
+  function postUrl(p) { return '/post?slug=' + encodeURIComponent(p.slug); }
 
   // Post body format (same rules the upload page explains):
   //   blank line = new paragraph, "## " = heading, "- " = bullet, **text** = bold
@@ -116,7 +116,7 @@
       document.title = 'Post not found – Uday Multiprint';
       setText('.breadcrumb__title', 'Post not found');
       setText('.breadcrumb__menu .current-item', 'Post not found');
-      if (article) article.innerHTML = '<div class="um-post-missing"><h3>This post isn’t available</h3><p>It may have been removed.</p><a class="rr-btn" href="blog-grid.html">Back to Blog</a></div>';
+      if (article) article.innerHTML = '<div class="um-post-missing"><h3>This post isn’t available</h3><p>It may have been removed.</p><a class="rr-btn" href="/blog-grid">Back to Blog</a></div>';
       return;
     }
     document.title = p.title + ' – Uday Multiprint';
@@ -149,7 +149,7 @@
   var isGrid = !!document.querySelector('.latest-blog__area');
   var isHome = !!document.querySelector('.latest-blog2__area');
   var isPostPage = !!document.querySelector('.blog__details-content');
-  var isDynamicPost = /(^|\/)post\.html$/.test(location.pathname);
+  var isDynamicPost = /(^|\/)post(\.html)?$/.test(location.pathname);
 
   fetch('data/posts.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : []; })

@@ -1,0 +1,23 @@
+# Hostinger (LiteSpeed/Apache) rules for udaymultiprint.in
+
+Options -MultiViews -Indexes
+RewriteEngine On
+
+# Files that only matter on the developer's computer
+RewriteRule ^(\.git|\.gitignore|serve\.js|data/admin\.json)(/|$) - [F,L]
+
+# Clean page addresses: show /service instead of /service.html
+# 1) old links: /index.html -> /, /service.html -> /service (query string kept)
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 2) no trailing slash on pages (keeps relative image/CSS paths working)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# 3) /service is served from service.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

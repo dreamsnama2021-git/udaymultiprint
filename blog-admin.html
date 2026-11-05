@@ -107,10 +107,10 @@
 <body>
 <header class="top">
   <div class="top-inner">
-    <a href="index.html"><img src="wp-content/uploads/2026/08/BRAND-KITS-1.webp" alt="Uday Multiprint"></a>
+    <a href="/"><img src="wp-content/uploads/2026/08/BRAND-KITS-1.webp" alt="Uday Multiprint"></a>
     <nav class="top-links">
-      <a href="blog-grid.html"><i class="fa-solid fa-arrow-left"></i> Back to Blog</a>
-      <a class="hide-sm" href="index.html">Home</a>
+      <a href="/blog-grid"><i class="fa-solid fa-arrow-left"></i> Back to Blog</a>
+      <a class="hide-sm" href="/">Home</a>
       <a href="#" id="logout" class="hidden">Log out</a>
     </nav>
   </div>
@@ -347,7 +347,7 @@
       }),
     }).then(function (post) {
       $('formMsg').className = 'msg show ok';
-      $('formMsg').innerHTML = 'Published! <a href="post.html?slug=' + encodeURIComponent(post.slug) + '" target="_blank" rel="noopener">View post</a> · <a href="blog-grid.html" target="_blank" rel="noopener">Open Blog page</a>';
+      $('formMsg').innerHTML = 'Published! <a href="/post?slug=' + encodeURIComponent(post.slug) + '" target="_blank" rel="noopener">View post</a> · <a href="/blog-grid" target="_blank" rel="noopener">Open Blog page</a>';
       resetForm(true);
       loadList();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -375,7 +375,7 @@
       $('list').innerHTML = posts.map(function (p) {
         return '<div class="post-row"><img src="' + esc(p.image) + '" alt="">' +
           '<div><h3>' + esc(p.title) + '</h3><div class="sub">' + esc(UMBlog.longDate(p.date)) + ' · ' + esc(p.author) + '</div></div>' +
-          '<div class="actions"><a href="post.html?slug=' + encodeURIComponent(p.slug) + '" target="_blank" rel="noopener">View</a>' +
+          '<div class="actions"><a href="/post?slug=' + encodeURIComponent(p.slug) + '" target="_blank" rel="noopener">View</a>' +
           '<button class="btn danger" data-slug="' + esc(p.slug) + '" data-title="' + esc(p.title) + '"><i class="fa-regular fa-trash-can"></i> Delete</button></div></div>';
       }).join('');
     }).catch(function (err) { show($('listMsg'), 'err', err.message); });
