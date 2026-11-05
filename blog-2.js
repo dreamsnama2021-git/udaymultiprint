@@ -10,14 +10,14 @@
     {
       title: 'Choosing the Right Packaging Partner for Your Business',
       url: 'choosing-the-right-packaging-partner-for-your-business.html',
-      date: '2026-07-21', author: 'Greensmediallp', category: 'Print Shop', minutes: 2,
+      date: '2026-07-21', author: 'Uday Multiprint', category: 'Print Shop', minutes: 2,
       image: 'wp-content/uploads/2026/07/ChatGPT-Image-Jul-20-2026-06_11_01-PM.webp',
       excerpt: 'Selecting the right packaging partner is one of the most important decisions a business can make. Beyond manufacturing cartons, a reliable packaging company becomes an extension of your brand, ensuring every package reflects your quality.',
     },
     {
       title: 'Why Packaging Is More Than Just a Box',
       url: 'why-packaging-is-more-than-just-a-box.html',
-      date: '2026-07-20', author: 'Greensmediallp', category: 'Print Shop', minutes: 2,
+      date: '2026-07-20', author: 'Uday Multiprint', category: 'Print Shop', minutes: 2,
       image: 'wp-content/uploads/2026/07/ChatGPT-Image-Jul-20-2026-05_19_47-PM.webp',
       excerpt: 'Packaging has evolved far beyond its traditional role of protecting products. Today, it serves as a powerful marketing tool, a reflection of brand identity, and a key factor in influencing purchasing decisions.',
     },

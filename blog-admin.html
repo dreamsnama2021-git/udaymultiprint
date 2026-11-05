@@ -167,7 +167,7 @@
             </div>
             <div class="field">
               <label for="author">Author</label>
-              <input type="text" id="author" maxlength="60" value="Greensmediallp">
+              <input type="text" id="author" maxlength="60" value="Uday Multiprint">
             </div>
             <div class="field">
               <label for="category">Category</label>
@@ -323,7 +323,7 @@
     $('pvTitle').textContent = $('title').value.trim() || 'Your title';
     var d = $('date').value;
     $('pvMeta').textContent = ($('category').value.trim() || 'Print Shop') + ' | ' + (d ? UMBlog.longDate(d) : '') +
-      ' · ' + ($('author').value.trim() || 'Greensmediallp');
+      ' · ' + ($('author').value.trim() || 'Uday Multiprint');
     var body = $('content').value.trim();
     $('pvBody').innerHTML = body ? UMBlog.renderBody(body) : '<p style="color:var(--muted)">Your post content will appear here.</p>';
   }

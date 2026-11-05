@@ -113,13 +113,13 @@
     var article = document.querySelector('.blog__details-content article');
     document.body.classList.remove('um-post-loading');
     if (!p) {
-      document.title = 'Post not found – greensmedia';
+      document.title = 'Post not found – Uday Multiprint';
       setText('.breadcrumb__title', 'Post not found');
       setText('.breadcrumb__menu .current-item', 'Post not found');
       if (article) article.innerHTML = '<div class="um-post-missing"><h3>This post isn’t available</h3><p>It may have been removed.</p><a class="rr-btn" href="blog-grid.html">Back to Blog</a></div>';
       return;
     }
-    document.title = p.title + ' – greensmedia';
+    document.title = p.title + ' – Uday Multiprint';
     setText('.breadcrumb__title', p.title);
     setText('.breadcrumb__menu .current-item', p.title);
     var img = document.querySelector('.blog__details-thumb img');

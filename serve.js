@@ -102,7 +102,7 @@ async function api(req, res, p) {
     const date = /^\d{4}-\d{2}-\d{2}$/.test(body.date) ? body.date : new Date().toISOString().slice(0, 10);
     const post = {
       slug, title,
-      author: clean(body.author, 60) || 'Greensmediallp',
+      author: clean(body.author, 60) || 'Uday Multiprint',
       category: clean(body.category, 60) || 'Print Shop',
       date,
       excerpt: clean(body.excerpt, 400),
