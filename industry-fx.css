@@ -1,0 +1,92 @@
+/* Scroll effects for the Industry pages.
+   Everything here only applies once industry-fx.js has added .fx-ready to <html>,
+   so the page still shows normally if the script doesn't run. */
+
+/* ---- Reading progress bar ---- */
+.fx-progress{
+  position:fixed; top:0; left:0; height:3px; width:100%;
+  background:linear-gradient(90deg, #FF3D00, #ff7a45);
+  transform-origin:0 50%; transform:scaleX(0);
+  z-index:10001; pointer-events:none;
+}
+
+/* ---- Generic reveal ---- */
+.fx-ready .fx{
+  opacity:0;
+  transform:translateY(36px);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--fx-delay, 0s);
+  will-change:opacity, transform;
+}
+.fx-ready .fx.fx-left{ transform:translateX(-48px); }
+.fx-ready .fx.fx-zoom{ transform:scale(.92); }
+.fx-ready .fx.fx-in{ opacity:1; transform:none; }
+
+/* ---- Heading: accent line grows in under the title ---- */
+.fx-ready .precision-title{ position:relative; padding-bottom:18px; }
+.fx-ready .precision-title::after{
+  content:''; position:absolute; left:50%; bottom:0;
+  width:90px; height:4px; border-radius:4px; background:#FF3D00;
+  transform:translateX(-50%) scaleX(0);
+  transition:transform .9s cubic-bezier(.22,1,.36,1) .35s;
+}
+.fx-ready .precision-title.fx-in::after{ transform:translateX(-50%) scaleX(1); }
+
+/* ---- Photo gallery: staggered rise, then soft zoom on hover ---- */
+.fx-ready .elementor-image-gallery .gallery-item{
+  opacity:0; transform:translateY(50px) scale(.96);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i, 0) * .12s);
+}
+.fx-ready .elementor-image-gallery.fx-in .gallery-item{ opacity:1; transform:none; }
+.elementor-image-gallery .gallery-icon{ overflow:hidden; border-radius:10px; }
+.elementor-image-gallery .gallery-item img{
+  transition:transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;
+}
+.elementor-image-gallery .gallery-item:hover img{ transform:scale(1.07); filter:saturate(1.1); }
+
+/* Product photos: same-size tiles filled edge to edge (no side bands). Only the empty studio
+   background above/below the box is trimmed; the popup still shows the full photo.
+   Even grid with equal gaps; a row that isn't full starts from the left. */
+.elementor-image-gallery .gallery:has(.um-product){
+  display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:12px;
+}
+.elementor-image-gallery .gallery:has(.um-product) .gallery-item{
+  max-width:none; width:auto; margin:0; padding:0;
+}
+@media (max-width:767px){ .elementor-image-gallery .gallery:has(.um-product){ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+@media (max-width:479px){ .elementor-image-gallery .gallery:has(.um-product){ grid-template-columns:1fr; } }
+.elementor-image-gallery img.um-product{
+  display:block; width:100%; height:auto; aspect-ratio:4 / 5; object-fit:cover; object-position:50% 50%;
+}
+/* wide photo (two boxes): keep the front box with the product name in the tile */
+.elementor-image-gallery img.um-product[src*="curalene-ultracare-travel-kit"]{ object-position:0 50%; }
+
+/* ---- Product tabs + cards ---- */
+.fx-ready .product-section .product-card{ opacity:0; }
+.fx-ready .product-grid.fx-in .product-card{
+  animation:fxCardIn .65s cubic-bezier(.22,1,.36,1) both;
+  animation-delay:calc(var(--i, 0) * 55ms);
+}
+@keyframes fxCardIn{
+  from{ opacity:0; transform:translateY(28px) scale(.96); }
+  to{ opacity:1; transform:none; }
+}
+.product-section .tab-btn{ position:relative; }
+
+/* ---- Accessibility: no motion for people who ask for less ---- */
+@media (prefers-reduced-motion: reduce){
+  .fx-ready .fx,
+  .fx-ready .elementor-image-gallery .gallery-item,
+  .fx-ready .product-section .product-card{
+    opacity:1 !important; transform:none !important; transition:none !important; animation:none !important;
+  }
+  .fx-ready .precision-title::after{ transform:translateX(-50%) scaleX(1); transition:none; }
+  .fx-progress{ display:none; }
+}
+
+/* Phones: shorter travel so things don't feel jumpy */
+@media (max-width:767px){
+  .fx-ready .fx{ transform:translateY(22px); }
+  .fx-ready .fx.fx-left{ transform:translateX(-24px); }
+}

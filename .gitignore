@@ -1,0 +1,11 @@
+# Blog admin password (created by serve.js) - never commit
+data/admin.json
+
+# Temporary files written while saving posts
+data/*.tmp
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+node_modules/

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Blog Upload – Uday Multiprint</title>
+<link rel="icon" href="wp-content/uploads/2026/08/BRAND-KITS-1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --accent:#FF3D00; --accent-dark:#d93400; --ink:#111; --body:#555; --muted:#8a8a8a;
+    --line:#e6e6e6; --bg:#f6f7fb; --card:#fff; --ok:#1f8a4c; --err:#c62828;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Poppins', sans-serif; background:var(--bg); color:var(--body); font-size:15px; line-height:1.6; }
+  a{ color:var(--accent); }
+  .top{ background:#000; }
+  .top-inner{ max-width:1200px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .top img{ height:44px; width:auto; display:block; }
+  .top-links{ display:flex; gap:18px; align-items:center; }
+  .top-links a{ color:#f5f5f7; text-decoration:none; font-size:14px; font-weight:500; }
+  .top-links a:hover{ color:var(--accent); }
+  .wrap{ max-width:1200px; margin:0 auto; padding:36px 20px 70px; }
+  h1{ font-size:32px; line-height:1.25; color:var(--ink); margin:0 0 6px; font-weight:700; }
+  .lead{ margin:0 0 28px; color:var(--muted); }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px; box-shadow:0 6px 18px rgba(0,0,0,.04); }
+  .card h2{ font-size:20px; color:var(--ink); margin:0 0 18px; font-weight:600; }
+  label{ display:block; font-weight:500; color:var(--ink); font-size:14px; margin-bottom:6px; }
+  .hint{ font-size:12.5px; color:var(--muted); margin-top:5px; }
+  input[type=text], input[type=password], input[type=date], textarea{
+    width:100%; font:inherit; color:var(--ink); background:#fff; border:1px solid #d9d9d9; border-radius:8px; padding:11px 13px;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  input:focus, textarea:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(255,61,0,.12); }
+  textarea{ resize:vertical; min-height:260px; line-height:1.65; }
+  .field{ margin-bottom:18px; }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .row3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font:inherit; font-weight:600; font-size:15px;
+    background:var(--accent); color:#fff; border:1.5px solid var(--accent); border-radius:6px; padding:11px 24px; cursor:pointer;
+    text-decoration:none; transition:background .2s ease, border-color .2s ease, transform .15s ease; }
+  .btn:hover{ background:#000; border-color:#000; }
+  .btn:disabled{ opacity:.6; cursor:not-allowed; }
+  .btn.ghost{ background:transparent; color:var(--ink); border-color:#d9d9d9; }
+  .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); background:transparent; }
+  .btn.danger{ background:transparent; color:var(--err); border-color:#f0c4c4; padding:7px 14px; font-size:13px; }
+  .btn.danger:hover{ background:var(--err); color:#fff; border-color:var(--err); }
+
+  .drop{ border:2px dashed #d0d0d0; border-radius:12px; background:#fafafa; min-height:190px; display:flex; align-items:center; justify-content:center;
+    text-align:center; cursor:pointer; position:relative; overflow:hidden; transition:border-color .2s ease, background .2s ease; }
+  .drop:hover, .drop.over{ border-color:var(--accent); background:#fff6f2; }
+  .drop .placeholder i{ font-size:30px; color:var(--accent); display:block; margin-bottom:8px; }
+  .drop img{ max-width:100%; max-height:280px; display:block; }
+  .drop input{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+
+  .layout{ display:grid; grid-template-columns:minmax(0, 1.15fr) minmax(0, 1fr); gap:24px; align-items:start; }
+  .preview{ position:sticky; top:20px; }
+  .preview .pv-img{ border-radius:10px; overflow:hidden; background:#f1f1f1; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; }
+  .preview .pv-img img{ width:100%; height:100%; object-fit:contain; }
+  .pv-meta{ font-size:13px; color:var(--muted); margin:14px 0 4px; }
+  .pv-title{ font-size:22px; line-height:1.35; color:var(--ink); font-weight:700; margin:0 0 12px; }
+  .pv-body{ max-height:420px; overflow:auto; padding-right:6px; }
+  .pv-body h4{ font-size:18px; color:var(--ink); margin:18px 0 8px; }
+  .pv-body p{ margin:0 0 12px; }
+  .pv-body ul{ margin:0 0 12px 20px; padding:0; }
+
+  .format{ background:#fff8f5; border:1px solid #ffd9cc; border-radius:10px; padding:12px 14px; font-size:13px; margin-bottom:8px; }
+  .format code{ background:#fff; border:1px solid #ffd9cc; border-radius:4px; padding:1px 5px; font-size:12px; }
+  .format ul{ margin:6px 0 0 18px; padding:0; }
+
+  .msg{ display:none; border-radius:8px; padding:12px 14px; margin-bottom:18px; font-size:14px; }
+  .msg.show{ display:block; }
+  .msg.ok{ background:#e8f6ee; color:var(--ok); border:1px solid #bfe6cf; }
+  .msg.err{ background:#fdecec; color:var(--err); border:1px solid #f5c2c2; }
+
+  .login{ max-width:440px; margin:30px auto 0; }
+  .posts{ margin-top:28px; }
+  .post-row{ display:grid; grid-template-columns:96px 1fr auto; gap:16px; align-items:center; padding:14px 0; border-top:1px solid var(--line); }
+  .post-row:first-of-type{ border-top:0; }
+  .post-row img{ width:96px; height:64px; object-fit:cover; border-radius:8px; background:#f1f1f1; }
+  .post-row h3{ font-size:15.5px; color:var(--ink); margin:0 0 2px; font-weight:600; line-height:1.4; }
+  .post-row .sub{ font-size:12.5px; color:var(--muted); }
+  .post-row .actions{ display:flex; gap:8px; align-items:center; }
+  .post-row .actions a{ font-size:13px; font-weight:500; text-decoration:none; }
+  .empty{ color:var(--muted); font-size:14px; margin:0; }
+  .hidden{ display:none !important; }
+
+  @media (max-width:900px){
+    .layout{ grid-template-columns:1fr; }
+    .preview{ position:static; }
+  }
+  @media (max-width:600px){
+    h1{ font-size:26px; }
+    .card{ padding:18px; }
+    .row2, .row3{ grid-template-columns:1fr; gap:0; }
+    .row2 .field, .row3 .field{ margin-bottom:18px; }
+    .post-row{ grid-template-columns:72px 1fr; }
+    .post-row img{ width:72px; height:52px; }
+    .post-row .actions{ grid-column:1 / -1; justify-content:flex-end; }
+    .top-links .hide-sm{ display:none; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html"><img src="wp-content/uploads/2026/08/BRAND-KITS-1.png" alt="Uday Multiprint"></a>
+    <nav class="top-links">
+      <a href="blog-grid.html"><i class="fa-solid fa-arrow-left"></i> Back to Blog</a>
+      <a class="hide-sm" href="index.html">Home</a>
+      <a href="#" id="logout" class="hidden">Log out</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Blog Upload</h1>
+  <p class="lead">Add a new post to the Blog page. It appears on the Blog page and the homepage as soon as you publish.</p>
+
+  <div id="noServer" class="msg err">
+    Uploading needs the site's local server. Start it with <b>node greensmedia-site/serve.js</b> and open
+    <b>http://localhost:5500/blog-admin.html</b>.
+  </div>
+
+  <!-- Step 1: password -->
+  <section id="loginBox" class="card login">
+    <h2><i class="fa-solid fa-lock" style="color:var(--accent)"></i> Admin login</h2>
+    <div id="loginMsg" class="msg err"></div>
+    <form id="loginForm">
+      <div class="field">
+        <label for="pw">Password</label>
+        <input type="password" id="pw" autocomplete="current-password" required>
+        <div class="hint">Shown in the terminal when the server starts (also saved in <code>data/admin.json</code>).</div>
+      </div>
+      <button class="btn" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Log in</button>
+    </form>
+  </section>
+
+  <!-- Step 2: write + publish -->
+  <div id="editor" class="hidden">
+    <div class="layout">
+      <section class="card">
+        <h2>New post</h2>
+        <div id="formMsg" class="msg"></div>
+        <form id="postForm" novalidate>
+          <div class="field">
+            <label for="title">Title *</label>
+            <input type="text" id="title" maxlength="160" required placeholder="e.g. 5 Ways Packaging Builds Brand Trust">
+          </div>
+
+          <div class="field">
+            <label>Featured image *</label>
+            <label class="drop" id="drop" for="image">
+              <span class="placeholder" id="dropText"><i class="fa-regular fa-image"></i><b>Click to choose</b> or drag an image here<br><span class="hint">JPG, PNG or WebP. Large photos are resized automatically.</span></span>
+              <img id="dropImg" class="hidden" alt="">
+              <input type="file" id="image" accept="image/jpeg,image/png,image/webp">
+            </label>
+          </div>
+
+          <div class="row3">
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date">
+            </div>
+            <div class="field">
+              <label for="author">Author</label>
+              <input type="text" id="author" maxlength="60" value="Greensmediallp">
+            </div>
+            <div class="field">
+              <label for="category">Category</label>
+              <input type="text" id="category" maxlength="60" value="Print Shop">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="excerpt">Short summary <span class="hint" style="display:inline">(optional, shown on the homepage)</span></label>
+            <input type="text" id="excerpt" maxlength="400" placeholder="Left empty, the start of the post is used">
+          </div>
+
+          <div class="field">
+            <label for="content">Post content *</label>
+            <div class="format">
+              Formatting:
+              <ul>
+                <li>Leave an empty line between paragraphs</li>
+                <li><code>## Heading</code> on its own line for a sub-heading</li>
+                <li><code>- item</code> lines for a bullet list</li>
+                <li><code>**bold words**</code> for bold</li>
+              </ul>
+            </div>
+            <textarea id="content" required placeholder="Write your post here..."></textarea>
+          </div>
+
+          <button class="btn" type="submit" id="publish"><i class="fa-solid fa-paper-plane"></i> Publish post</button>
+          <button class="btn ghost" type="button" id="clear">Clear</button>
+        </form>
+      </section>
+
+      <aside class="card preview" aria-label="Preview">
+        <h2>Preview</h2>
+        <div class="pv-img" id="pvImg">No image yet</div>
+        <div class="pv-meta" id="pvMeta"></div>
+        <h3 class="pv-title" id="pvTitle">Your title</h3>
+        <div class="pv-body" id="pvBody"><p style="color:var(--muted)">Your post content will appear here.</p></div>
+      </aside>
+    </div>
+
+    <section class="card posts">
+      <h2>Uploaded posts</h2>
+      <div id="listMsg" class="msg"></div>
+      <div id="list"><p class="empty">Loading…</p></div>
+      <p class="hint" style="margin-top:14px">The two original posts are part of the site's pages and aren't listed here.</p>
+    </section>
+  </div>
+</main>
+
+<script src="blog.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'um-blog-admin-pw';
+  var password = '';
+  var imageData = '';
+
+  function store(get, val) {
+    try { return get ? sessionStorage.getItem(KEY) : (val ? sessionStorage.setItem(KEY, val) : sessionStorage.removeItem(KEY)); }
+    catch (e) { return null; }
+  }
+  function show(el, kind, text) {
+    el.className = 'msg show ' + kind;
+    el.textContent = text;
+  }
+  function hide(el) { el.className = 'msg'; el.textContent = ''; }
+  function api(path, opts) {
+    return fetch(path, opts).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok) throw new Error(j.error || 'Something went wrong (' + r.status + ').');
+        return j;
+      });
+    });
+  }
+
+  // ---- is the local server there? ----
+  if (location.protocol === 'file:') {
+    $('noServer').classList.add('show');
+    $('loginBox').classList.add('hidden');
+    return;
+  }
+
+  // ---- login ----
+  function enter(pw) {
+    return api('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }) })
+      .then(function () {
+        password = pw; store(false, pw);
+        $('loginBox').classList.add('hidden');
+        $('editor').classList.remove('hidden');
+        $('logout').classList.remove('hidden');
+        loadList();
+        $('title').focus();
+      });
+  }
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    hide($('loginMsg'));
+    enter($('pw').value).catch(function (err) {
+      if (/Failed to fetch|NetworkError/.test(err.message)) { $('noServer').classList.add('show'); return; }
+      show($('loginMsg'), 'err', err.message);
+    });
+  });
+  $('logout').addEventListener('click', function (e) {
+    e.preventDefault(); store(false, null); location.reload();
+  });
+  var saved = store(true);
+  if (saved) enter(saved).catch(function () { store(false, null); });
+
+  // ---- defaults ----
+  $('date').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  // ---- image: resize big photos in the browser before upload ----
+  function readImage(file) {
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp)$/.test(file.type)) { show($('formMsg'), 'err', 'Please choose a JPG, PNG or WebP image.'); return; }
+    hide($('formMsg'));
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var MAX = 1600;
+        if (img.width <= MAX && file.size <= 1.5 * 1024 * 1024) { setImage(reader.result); return; }
+        var scale = Math.min(1, MAX / img.width);
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        setImage(c.toDataURL('image/jpeg', 0.86));
+      };
+      img.onerror = function () { show($('formMsg'), 'err', 'That image could not be read. Try another file.'); };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  function setImage(dataUrl) {
+    imageData = dataUrl;
+    $('dropImg').src = dataUrl; $('dropImg').classList.remove('hidden');
+    $('dropText').classList.add('hidden');
+    $('pvImg').innerHTML = '<img alt="" src="' + dataUrl + '">';
+  }
+  $('image').addEventListener('change', function () { readImage(this.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.add('over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.remove('over'); });
+  });
+  $('drop').addEventListener('drop', function (e) { readImage(e.dataTransfer.files[0]); });
+
+  // ---- live preview ----
+  function preview() {
+    $('pvTitle').textContent = $('title').value.trim() || 'Your title';
+    var d = $('date').value;
+    $('pvMeta').textContent = ($('category').value.trim() || 'Print Shop') + ' | ' + (d ? UMBlog.longDate(d) : '') +
+      ' · ' + ($('author').value.trim() || 'Greensmediallp');
+    var body = $('content').value.trim();
+    $('pvBody').innerHTML = body ? UMBlog.renderBody(body) : '<p style="color:var(--muted)">Your post content will appear here.</p>';
+  }
+  ['title', 'date', 'author', 'category', 'content'].forEach(function (id) { $(id).addEventListener('input', preview); });
+  preview();
+
+  // ---- publish ----
+  $('postForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var title = $('title').value.trim(), content = $('content').value.trim();
+    if (!title) { show($('formMsg'), 'err', 'Please add a title.'); $('title').focus(); return; }
+    if (!imageData) { show($('formMsg'), 'err', 'Please choose a featured image.'); return; }
+    if (!content) { show($('formMsg'), 'err', 'Please write the post content.'); $('content').focus(); return; }
+    var btn = $('publish');
+    btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publishing…';
+    api('/api/posts', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password: password, title: title, content: content, image: imageData,
+        date: $('date').value, author: $('author').value, category: $('category').value, excerpt: $('excerpt').value,
+      }),
+    }).then(function (post) {
+      $('formMsg').className = 'msg show ok';
+      $('formMsg').innerHTML = 'Published! <a href="post.html?slug=' + encodeURIComponent(post.slug) + '" target="_blank" rel="noopener">View post</a> · <a href="blog-grid.html" target="_blank" rel="noopener">Open Blog page</a>';
+      resetForm(true);
+      loadList();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(function (err) {
+      show($('formMsg'), 'err', err.message);
+    }).then(function () {
+      btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Publish post';
+    });
+  });
+  function resetForm(keepMsg) {
+    ['title', 'excerpt', 'content'].forEach(function (id) { $(id).value = ''; });
+    $('image').value = ''; imageData = '';
+    $('dropImg').classList.add('hidden'); $('dropText').classList.remove('hidden');
+    $('pvImg').textContent = 'No image yet';
+    if (!keepMsg) hide($('formMsg'));
+    preview();
+  }
+  $('clear').addEventListener('click', function () { resetForm(false); });
+
+  // ---- list + delete ----
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function loadList() {
+    api('/api/posts').then(function (posts) {
+      if (!posts.length) { $('list').innerHTML = '<p class="empty">No uploaded posts yet.</p>'; return; }
+      $('list').innerHTML = posts.map(function (p) {
+        return '<div class="post-row"><img src="' + esc(p.image) + '" alt="">' +
+          '<div><h3>' + esc(p.title) + '</h3><div class="sub">' + esc(UMBlog.longDate(p.date)) + ' · ' + esc(p.author) + '</div></div>' +
+          '<div class="actions"><a href="post.html?slug=' + encodeURIComponent(p.slug) + '" target="_blank" rel="noopener">View</a>' +
+          '<button class="btn danger" data-slug="' + esc(p.slug) + '" data-title="' + esc(p.title) + '"><i class="fa-regular fa-trash-can"></i> Delete</button></div></div>';
+      }).join('');
+    }).catch(function (err) { show($('listMsg'), 'err', err.message); });
+  }
+  $('list').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-slug]');
+    if (!b) return;
+    if (!confirm('Delete "' + b.getAttribute('data-title') + '"? This removes it from the website and can’t be undone.')) return;
+    b.disabled = true;
+    api('/api/posts/' + encodeURIComponent(b.getAttribute('data-slug')), { method: 'DELETE', headers: { 'X-Admin-Password': password } })
+      .then(function () { hide($('listMsg')); loadList(); })
+      .catch(function (err) { b.disabled = false; show($('listMsg'), 'err', err.message); });
+  });
+})();
+</script>
+</body>
+</html>
