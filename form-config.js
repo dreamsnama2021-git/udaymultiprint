@@ -7,7 +7,7 @@
 //
 // This key is meant to be public: Web3Forms only lets it send enquiries to your own email.
 window.UM_FORM_CONFIG = {
-  web3formsAccessKey: '1f306815-d66a-4ce3-bc6f-73dd1b24b486',
+  web3formsAccessKey: 'ea6904f7-72bd-4e1b-ac2a-748328cfff97',
   useHcaptcha: false,
   // shown as the email sender name and subject prefix
   siteName: 'Uday Multiprint Website',
