@@ -6,6 +6,9 @@ RewriteEngine On
 # Files that only matter on the developer's computer
 RewriteRule ^(\.git|\.gitignore|serve\.js|data/admin\.json)(/|$) - [F,L]
 
+# The second blog layout page was removed; send old links to the Blog page
+RewriteRule ^blog-2(\.html)?/?$ /blog-grid [R=301,L]
+
 # Clean page addresses: show /service instead of /service.html
 # 1) old links: /index.html -> /, /service.html -> /service (query string kept)
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
