@@ -37,17 +37,17 @@ html body :is(button, input[type="submit"], input[type="button"], .rr-btn, .rr-e
 /* Brand logo strip ("Trusted by Leading Brands"): bigger logos.
    The logo files (uploads/logos/) are trimmed to the logo itself, so a
    wide logo fills the box width and a round/square one the max height. */
-.tb-section .tb-logo{ width:250px; height:140px; padding:0 20px; }
-.tb-section .tb-logo img{ max-width:100%; max-height:92px; }
+.tb-section .tb-logo{ width:200px; height:110px; padding:0 22px; }
+.tb-section .tb-logo img{ max-width:100%; max-height:60px; }
 @media (max-width:900px){
-  .tb-section .tb-logo{ width:210px; height:120px; padding:0 18px; }
-  .tb-section .tb-logo img{ max-height:80px; }
+  .tb-section .tb-logo{ width:176px; height:100px; padding:0 20px; }
+  .tb-section .tb-logo img{ max-height:54px; }
 }
 @media (max-width:560px){
-  .tb-section .tb-logo{ width:170px; height:100px; padding:0 14px; }
-  .tb-section .tb-logo img{ max-height:64px; }
+  .tb-section .tb-logo{ width:140px; height:84px; padding:0 16px; }
+  .tb-section .tb-logo img{ max-height:44px; }
 }
 @media (max-width:380px){
-  .tb-section .tb-logo{ width:150px; height:90px; padding:0 12px; }
-  .tb-section .tb-logo img{ max-height:56px; }
+  .tb-section .tb-logo{ width:124px; height:76px; padding:0 14px; }
+  .tb-section .tb-logo img{ max-height:40px; }
 }
