@@ -586,11 +586,11 @@ html:root{
   .ab-banner{
     position:relative;
     width:100%;
-    /* Keeps the exact 1920:400 proportions of the source image at
-       every viewport width — the banner scales fluidly instead of
-       being cropped or stretched. */
-    aspect-ratio:1920 / 400;
-    background-image:url('wp-content/uploads/external/about-us-banner.jpg');
+    /* Desktop photo is 2000x667 (3:1): keep that shape, but never
+       taller than most of the screen. Phones get a portrait photo below. */
+    aspect-ratio:2000 / 667;
+    max-height:min(560px, 72vh);
+    background-image:url('wp-content/uploads/contact/contact-banner-desktop.webp');
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -658,21 +658,20 @@ html:root{
     .ab-breadcrumb{ font-size:13px; margin-bottom:10px; }
   }
 
-  /* Below this width the 4.8:1 ratio would make the banner too short
-     for the text to breathe, so we switch to a fixed minimum height
-     instead of continuing to shrink with the ratio. */
+  /* Phones: portrait photo (1086x1448, 3:4), capped so the page
+     content still peeks in below the banner. */
   @media(max-width:560px){
     .ab-banner{
-      aspect-ratio:auto;
-      min-height:220px;
+      aspect-ratio:3 / 4;
+      max-height:68vh;
+      background-image:url('wp-content/uploads/contact/contact-banner-mobile.webp');
     }
-    .ab-banner h1{ font-size:26px; }
+    .ab-banner h1{ font-size:30px; }
     .ab-breadcrumb{ font-size:12px; gap:6px; }
   }
 
   @media(max-width:380px){
-    .ab-banner{ min-height:190px; }
-    .ab-banner h1{ font-size:22px; }
+    .ab-banner h1{ font-size:26px; }
   }
 </style>
 				</div>
