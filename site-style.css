@@ -34,6 +34,76 @@ html body :is(button, input[type="submit"], input[type="button"], .rr-btn, .rr-e
   font-family:var(--um-ff-primary) !important;
 }
 
+/* Font sizes: one scale for the whole site (desktop / tablet <=991px / phone <=575px).
+   Role                                   desktop  tablet  phone
+   Page title (h1)                          48      40      32
+   Section title (h2)                       44      36      28
+   Heading inside text (policy/blog h2)     28      26      22
+   Card / step title (h3)                   24      22      20
+   Small card label (h3)                    16      16      15
+   Blog / sidebar title (h4, h5)            20      20      18
+   Section eyebrow (h6 subtitle)            18      16      14
+   Body text (p, li)                        16      16      15
+   Intro text under a big heading           18      17      16
+   The home hero slider keeps its own large size. */
+html body :is(h1, h2, h3, h4, h5, h6):not(#um-site){ line-height:1.25 !important; }
+html body h1:not(#um-site){ font-size:48px !important; }
+html body h2:not(#um-site){ font-size:44px !important; }
+html body h3:not(#um-site){ font-size:24px !important; }
+html body :is(h4, h5):not(#um-site){ font-size:20px !important; }
+html body h6:not(#um-site){ font-size:18px !important; }
+html body :is(p, li):not(#um-site){ font-size:16px !important; line-height:1.7 !important; }
+
+/* exceptions */
+html body .gm-banner :is(h1, h2):not(#um-site){ font-size:60px !important; line-height:1.1 !important; }
+html body .gm-banner p:not(#um-site),
+html body :is(.rr-el-subtitle, .latest-Choose-us__area p.wow, .contact-us__area .mb-40, .rr-el-desc):not(#um-site){ font-size:18px !important; }
+html body :is(.tp-page-content, .postbox__text, .postbox__details-content, .rr-blog-area .postbox__content) h2:not(#um-site){ font-size:28px !important; margin-top:32px; }
+html body :is(.sidebar__widget, .widget, .rr-blog-area aside) :is(h2, h3, h5):not(#um-site){ font-size:20px !important; }
+html body .rr-blog-area .postbox__title:not(#um-site){ font-size:36px !important; }
+html body :is(.product-section h3, .rr-contact-item-title, .rc__post-title):not(#um-site){ font-size:16px !important; }
+html body .ct-life-cycle h3:not(#um-site){ font-size:20px !important; }
+html body .ct-life-cycle p:not(#um-site){ font-size:15px !important; }
+html body .csg-caption h3:not(#um-site){ font-size:28px !important; }
+html body .csg-caption p:not(#um-site){ font-size:16px !important; }
+html body .rr-el-exp:not(#um-site){ font-size:inherit; }
+html body h3.rr-el-exp:not(#um-site){ font-size:36px !important; }
+html body .rr-el-blog-meta:not(#um-site){ font-size:14px !important; }
+/* menu, footer and buttons keep their own sizes */
+html body :is(header, .site-footer, .footer-bottom) :is(p, li):not(#um-site){ font-size:inherit !important; }
+
+@media (max-width:991px){
+  html body h1:not(#um-site){ font-size:40px !important; }
+  html body h2:not(#um-site){ font-size:36px !important; }
+  html body h3:not(#um-site){ font-size:22px !important; }
+  html body h6:not(#um-site){ font-size:16px !important; }
+  html body .gm-banner :is(h1, h2):not(#um-site){ font-size:44px !important; }
+  html body :is(.tp-page-content, .postbox__text, .postbox__details-content, .rr-blog-area .postbox__content) h2:not(#um-site){ font-size:26px !important; }
+  html body .rr-blog-area .postbox__title:not(#um-site){ font-size:30px !important; }
+  html body .gm-banner p:not(#um-site),
+  html body :is(.rr-el-subtitle, .latest-Choose-us__area p.wow, .contact-us__area .mb-40, .rr-el-desc):not(#um-site){ font-size:17px !important; }
+  html body .csg-caption h3:not(#um-site){ font-size:24px !important; }
+}
+@media (max-width:575px){
+  html body h1:not(#um-site){ font-size:32px !important; }
+  html body h2:not(#um-site){ font-size:28px !important; }
+  html body h3:not(#um-site){ font-size:20px !important; }
+  html body :is(h4, h5):not(#um-site){ font-size:18px !important; }
+  html body h6:not(#um-site){ font-size:14px !important; }
+  html body :is(p, li):not(#um-site){ font-size:15px !important; }
+  html body .gm-banner :is(h1, h2):not(#um-site){ font-size:32px !important; }
+  html body :is(.tp-page-content, .postbox__text, .postbox__details-content, .rr-blog-area .postbox__content) h2:not(#um-site){ font-size:22px !important; }
+  html body .rr-blog-area .postbox__title:not(#um-site){ font-size:26px !important; }
+  html body .gm-banner p:not(#um-site),
+  html body :is(.rr-el-subtitle, .latest-Choose-us__area p.wow, .contact-us__area .mb-40, .rr-el-desc):not(#um-site){ font-size:16px !important; }
+  html body :is(.product-section h3, .rr-contact-item-title, .rc__post-title):not(#um-site){ font-size:15px !important; }
+  html body h3.rr-el-exp:not(#um-site){ font-size:30px !important; }
+  html body .csg-caption h3:not(#um-site){ font-size:22px !important; }
+}
+
+/* Privacy / Terms: page starts right under the header now that the banner is gone */
+html body .tp-page-content:not(#um-site){ padding-top:16px; }
+
 /* Brand logo strip ("Trusted by Leading Brands").
    Logo files (uploads/logos/, lossless PNG) are trimmed to the logo itself.
    Most source logos are only ~90px wide, so each of those carries an
