@@ -122,3 +122,11 @@ html body .tp-page-content:not(#um-site){ padding-top:16px; }
   .tb-section .tb-logo{ width:122px; height:74px; padding:0 14px; }
   .tb-section .tb-logo img{ max-height:38px; }
 }
+
+/* Back-to-top button: orange circle with black arrow; on hover a white
+   circle with an orange arrow */
+.back-to-top{ transition:opacity .25s ease, transform .25s ease, visibility .25s, background-color .2s ease, color .2s ease !important; }
+.back-to-top:hover,
+.back-to-top:focus-visible{ background:#fff !important; color:#FF3D00 !important; box-shadow:0 4px 14px rgba(0,0,0,.18) !important; }
+.back-to-top:hover i,
+.back-to-top:focus-visible i{ color:#FF3D00 !important; }
