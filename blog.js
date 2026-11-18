@@ -50,8 +50,6 @@
       '<div class="latest-blog__item-media"><img src="' + esc(p.image) + '" alt="' + esc(p.title) + '" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"></div>' +
       '<div class="latest-blog__item-text"><div class="latest-blog__item-text-meta d-flex">' +
       '<div class="latest-blog__item-text-meta-calender"><h4>' + x.d + '</h4><p>' + badgeMonth(x.m) + '</p></div>' +
-      '<span><a class="rr-el-blog-meta" href="' + url + '"><i class="fa-regular fa-user"></i> ' + esc(p.author) + '</a></span>' +
-      '<span class="meta-comment "><a class="rr-el-blog-meta" href="' + url + '"><i class="fa-regular fa-comment"></i> No Comments</a></span>' +
       '</div><div class="latest-blog__item-text-bottom"><a href="' + url + '"><h4 class="rr-el-title">' + esc(p.title) + '</h4></a>' +
       '<a href="' + url + '" class="readmore d-flex align-items-center rr-el-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>' +
       '</div></div></div></div></div>';
