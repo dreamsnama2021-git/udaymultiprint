@@ -1,0 +1,53 @@
+/* Site-wide look shared by every page (loaded last, so it wins over the
+   per-section <style> blocks copied from WordPress/Elementor).
+
+   Fonts: one primary + one secondary font everywhere.
+   - Primary  (Poppins): headings, section subtitles, menu, buttons
+   - Secondary (Inter):  all other text
+   Icon fonts (Font Awesome, swiper arrows) and code are left alone.
+   ":not(#um-site)" matches everything; it only raises the rule's weight
+   above the older section styles, some of which use !important. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --um-ff-primary:'Poppins', sans-serif;
+  --um-ff-secondary:'Inter', sans-serif;
+  /* theme + Elementor variables, so their own rules pick the same fonts */
+  --rr-ff-heading:var(--um-ff-primary);
+  --rr-ff-subtitle:var(--um-ff-primary);
+  --rr-ff-body:var(--um-ff-secondary);
+  --rr-ff-p:var(--um-ff-secondary);
+}
+
+/* Secondary: everything that isn't an icon or code */
+html body:not(#um-site),
+html body :where(*:not(i, svg, svg *, code, pre, kbd, samp, .fa, .fab, .fas, .far, .fal, .fat, .fad, [class*="fa-"], [class*="icon"])):not(#um-site){
+  font-family:var(--um-ff-secondary) !important;
+}
+
+/* Primary: headings and title blocks (with the text inside them), subtitles,
+   menus, buttons. Theme card titles are often <div class="...title">. */
+html body :is(h1, h2, h3, h4, h5, h6, [class*="title"]:not(p), .team-eyebrow, .ct-card-face span):not(#um-site),
+html body :is(h1, h2, h3, h4, h5, h6, [class*="title"]:not(p)) :where(*:not(i, svg, svg *, p, .fa, .fab, .fas, .far, .fal, .fat, .fad, [class*="fa-"], [class*="icon"])):not(#um-site),
+html body :is(header, [class*="offcanvas"], .mean-container) :is(nav, [class*="menu"]) a:not(#um-site),
+html body :is(button, input[type="submit"], input[type="button"], .rr-btn, .rr-el-btn, .readmore, [class*="theme-btn"], [class*="-btn"]):not(#um-site){
+  font-family:var(--um-ff-primary) !important;
+}
+
+/* Brand logo strip ("Trusted by Leading Brands"): bigger logos.
+   The logo files (uploads/logos/) are trimmed to the logo itself, so a
+   wide logo fills the box width and a round/square one the max height. */
+.tb-section .tb-logo{ width:250px; height:140px; padding:0 20px; }
+.tb-section .tb-logo img{ max-width:100%; max-height:92px; }
+@media (max-width:900px){
+  .tb-section .tb-logo{ width:210px; height:120px; padding:0 18px; }
+  .tb-section .tb-logo img{ max-height:80px; }
+}
+@media (max-width:560px){
+  .tb-section .tb-logo{ width:170px; height:100px; padding:0 14px; }
+  .tb-section .tb-logo img{ max-height:64px; }
+}
+@media (max-width:380px){
+  .tb-section .tb-logo{ width:150px; height:90px; padding:0 12px; }
+  .tb-section .tb-logo img{ max-height:56px; }
+}
